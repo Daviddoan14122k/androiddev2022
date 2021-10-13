@@ -15,6 +15,7 @@ public  class AdapterPage extends FragmentPagerAdapter{
         return PAGE_COUNT;
     }
 
+
     @Override
     public Fragment getItem(int page){
         switch (page){
@@ -28,6 +29,7 @@ public  class AdapterPage extends FragmentPagerAdapter{
         }
         return null;
     }
+
 
     @Override
     public CharSequence getPageTitle(int page){

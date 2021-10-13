@@ -12,10 +12,14 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         Log.i("Chuong", "onCreate");
-        // Create a new Fragment to be placed in the activity layout
-        ForecastFragment firstFragment = new ForecastFragment();
-        // Add the fragment to the 'container' FrameLayout
-        getSupportFragmentManager().beginTransaction().add(R.id.container, firstFragment).commit();
+//        ForecastFragment firstFragment = new ForecastFragment();
+//        getSupportFragmentManager().beginTransaction().add(R.id.container,firstFragment).commit();
+//        WeatherFragment secondFragement =new WeatherFragment();
+//        getSupportFragmentManager().beginTransaction().add(R.id.container,secondFragement).commit();
+        PagerAdapter adapter = new AdapterPage(getSupportFragmentManager());
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+//        pager.setOffscreenPageLimit(3);
+        pager.setAdapter(adapter);
     }
 
     @Override

@@ -27,6 +27,26 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_items, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                Toast toast = Toast.makeText(this, "Refresh", Toast.LENGTH_SHORT);
+                toast.show();
+                super.onRestart();
+
+            case R.id.settings:
+                Intent intent = new Intent(this, PrefActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
         Log.i("Chuong", "onRestart");

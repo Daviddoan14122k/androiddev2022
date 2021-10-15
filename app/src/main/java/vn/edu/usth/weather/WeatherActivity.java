@@ -20,6 +20,10 @@ public class WeatherActivity extends AppCompatActivity {
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
 //        pager.setOffscreenPageLimit(3);
         pager.setAdapter(adapter);
+
+	# add play music
+	MediaPlayer play = MediaPlayer.create(getApplicationContext(), R.raw.audiomusic);
+        play.start();
     }
 
     @Override

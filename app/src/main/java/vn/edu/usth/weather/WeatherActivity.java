@@ -81,4 +81,50 @@ public class WeatherActivity extends AppCompatActivity {
         super.onResume();
         Log.i("Chuong","onResume");
     }
+
+    final Handler ProgressHandlerMessage = new Handler(Looper.getMainLooper()) {
+
+        public void handleMessage(Message msg) {
+                String content = msg.getData().getString("Server_Response");
+                Toast toast = Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT);
+                toast.show();
+        }
+    };
+
+    @SuppressLint("StaticFieldLeak")
+    public void Refresh() {
+        // Practical work 13
+
+        final Handler handler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+// This method is executed in main thread
+                String content = msg.getData().getString("Server_Response");
+                Toast toast = Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        };
+        Thread th = new Thread(() -> {
+// this method is run in a worker thread
+            try {
+// wait for 5 seconds to simulate a long network access
+                int i;
+                for (i=0;i<10;i++){
+                    Log.i(mess,"loop"+i);
+                    Thread.sleep(1000);
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+// Assume that we got our data from server
+            Bundle bundle = new Bundle();
+            bundle.putString("Server_Response", "Refreshing Start");
+// notify main thread
+            Message msg = new Message();
+            msg.setData(bundle);
+            handler.sendMessage(msg);
+        });
+        th.start();
+    }
 }

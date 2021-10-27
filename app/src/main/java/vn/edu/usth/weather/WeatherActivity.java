@@ -8,6 +8,7 @@
     };
 
     // Practical work 13
+
     @SuppressLint("StaticFieldLeak")
     public void Refresh() {
 
@@ -44,6 +45,7 @@
 //        th.start();
 
         // Practical work 14
+
         AsyncTask<Integer, Integer, Integer> taskA = new AsyncTask<Integer, Integer, Integer>() {
 
             @Override
